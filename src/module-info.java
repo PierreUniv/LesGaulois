@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author pierrehanna
+ *
+ */
+module LesGaulois {
+}
