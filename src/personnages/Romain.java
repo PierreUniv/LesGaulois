@@ -20,12 +20,19 @@ private String prendreParole() {
 }
 
 public void recevoirCoup(int forceCoup) {
-	force=-forceCoup;
+	force-=forceCoup;
 	if (force>0) {
 		parler("Aïe");
 	} else {
 		parler("J'abondonne...");
 	}
+
+}
+public static void main(String[] args) {
+	Romain romi= new Romain("Romi",10);
+	romi.prendreParole();
+	romi.parler("Hello this is me");
+	romi.recevoirCoup(2);
 
 }
 
