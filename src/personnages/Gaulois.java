@@ -2,14 +2,16 @@ package personnages;
 
 public class Gaulois {
 	private String nom;
-	private int force;
+	private int force, nbtrophees;
 	private int effetPotion=1;
+	private Equipement[] trophees = new Equipement[100];
 	
 	public Gaulois(String nom, int force) {
 
-		
 		this.nom = nom;
 		this.force = force;
+		
+		
 	}
 
 	public String getNom() {
@@ -21,27 +23,41 @@ public class Gaulois {
 
 	}
 
-	private String prendreParole() {
-		return "Le gaulois " + nom + " : ";
-
-	}
-
-	public void frapper(Romain romain) {
-	System.out.println(nom + "envoie un grand coup dans la mâchoire de  " + romain.getNom());
-	romain.recevoirCoup((force/3)*effetPotion);
-	}
+    private String prendreParole() {
+    	 return "Le gaulois " + nom + " : ";
+       
+}
 	
-	@Override
-	public String toString() {
-		
-		return "Gauloir [nom=" + nom + ", force=" + force + ", effetPotion=" + effetPotion + "]";
-		
-	}
+//	private String prendreParole() {
+//		return "Le gaulois " + nom + " : ";
+//
+//	}
+
+//	public void frapper(Romain romain) {
+//	System.out.println(nom + "envoie un grand coup dans la mâchoire de  " + romain.getNom());
+//	romain.recevoirCoup((force/3)*effetPotion);
+//	}
+    
+    
+    public void frapper(Romain romain) {
+    	System.out.println(nom + " envoie un grand coup dans la mâchoire de " + romain.getNom());
+    	Equipement[] tropheesF = romain.recevoirCoup((force / 3) *effetPotion);
+    	for (int i = 0; tropheesF != null && i < tropheesF.length; i++,nbtrophees++) {
+    	               this.trophees[nbtrophees] = tropheesF[i];
+    	} 	
+    }
 	
-	public void boirePotion(int forcePotion) {//TODO quelle doit être la visibilité de cette fonction
+//	@Override
+//	public String toString() {
+//		return "Gauloir [nom=" + nom + ", force=" + force + ", effetPotion=" + effetPotion + "]";
+//	}
+	
+	public void boirePotion(int forcePotion) {
 		effetPotion=forcePotion;
 		parler("Merci Druide, je sens que ma force est "+forcePotion+ " fois décuplée.");
+		
 	}
+	
 	
 	
 
